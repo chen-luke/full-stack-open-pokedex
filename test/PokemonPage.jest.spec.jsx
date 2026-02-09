@@ -138,3 +138,4 @@ describe('<PokemonPage />', () => {
     expect(screen.queryByText('Next')).toBeNull()
   })
 })
+

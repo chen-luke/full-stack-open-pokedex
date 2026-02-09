@@ -14,9 +14,14 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'jest'],
+  settings: {
+    react: {
+      version: 'detect', // This tells eslint-plugin-react to check your package.json
+    },
+  },
   rules: {
     indent: ['error', 2],
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     eqeqeq: 'error',
@@ -27,3 +32,4 @@ module.exports = {
     'react/prop-types': 0,
   },
 }
+
