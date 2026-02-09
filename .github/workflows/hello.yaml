@@ -19,3 +19,6 @@ jobs:
       - name: Directory content
         run: |
           ls -l
+      - name: Run linter
+        run: |
+          npm run eslint
