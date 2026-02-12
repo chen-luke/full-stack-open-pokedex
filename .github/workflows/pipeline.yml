@@ -70,7 +70,11 @@ jobs:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: |
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      !contains(join(github.event.commits.*.message, ' '), '#skip')
+    # join creates a single wall of text, it works with squash merge and normal merge
     steps:
       - uses: actions/checkout@v4
 
@@ -79,3 +83,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
+
+    ## this is for testing
