@@ -60,7 +60,10 @@ jobs:
 
       # Deployment only runs if ALL previous steps passed
       - name: Deploy to Render
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: |
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          !contains(join(github.event.commits.*.message, ' '), '#skip')
         uses: sws2apps/render-deployment@v2.0.0
         with:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
