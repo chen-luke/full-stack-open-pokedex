@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '45 21 * * *'
 jobs:
   health_check:
     runs-on: ubuntu-latest
