@@ -69,13 +69,13 @@ jobs:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.RENDER_API_KEY }}
 
-      - name: Notify Discord
-        uses: sarisia/actions-status-discord@v1
-        if: always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          content: 'Deployment Pipeline finished with status: ${{ job.status }}'
+      # - name: Notify Discord
+      #   uses: sarisia/actions-status-discord@v1
+      #   if: always()
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      #     status: ${{ job.status }}
+      #     content: 'Deployment Pipeline finished with status: ${{ job.status }}'
 
   tag_release:
     needs: [simple_deployment_pipeline]
